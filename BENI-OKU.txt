@@ -1,0 +1,16 @@
+COLOR FLOW - TÜP OYUNU
+TÜP OYUNU (top ayıklama): tüplerdeki renkli topları, her tüpte tek renk kalana kadar taşıyorsun.
+
+NASIL KURULUR
+1) Hızlı yol (PWA): "www" klasörünü bir HTTPS adresine yükle (GitHub Pages, Netlify, Cloudflare Pages ücretsiz).
+   Telefonda adresi aç. Android Chrome: menü > Ana ekrana ekle / Uygulamayı yükle.
+   iPhone Safari: Paylaş > Ana Ekrana Ekle. Oyun tam ekran uygulama gibi açılır ve internetsiz çalışır.
+   (Dosyayı çift tıklayıp açarsan oyun çalışır ama kurulum ve çevrimdışı önbellek çalışmaz; HTTPS gerekir.)
+
+2) Android APK (Capacitor): Node.js 18+ ve Android Studio gerekir.
+   npm install
+   npx cap add android
+   npx cap sync
+   npx cap open android
+   Android Studio'da: Build > Build APK(s). Play Store için: Generate Signed Bundle (.aab).
+   Uygulama kimliği: com.colorflow.tup (capacitor.config.json) - yayınlamadan önce kendi alan adına göre değiştir.
