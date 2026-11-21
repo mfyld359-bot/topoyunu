@@ -1,0 +1,33 @@
+name: Build APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Bagimliliklari kur
+        run: npm install
+      - name: Android projesini olustur
+        run: npx cap add android
+      - name: Web dosyalarini esitle
+        run: npx cap sync android
+      - name: APK derle
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - name: APK yukle
+        uses: actions/upload-artifact@v4
+        with:
+          name: color-flow-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
